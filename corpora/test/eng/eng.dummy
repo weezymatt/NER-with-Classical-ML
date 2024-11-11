@@ -1,0 +1,19 @@
+-DOCSTART- -X- -X- O
+
+The DT B-NP O
+University NNP I-NP B-ORG
+of IN B-PP I-ORG
+Arizona NNP B-NP I-ORG
+is VBZ B-VP O
+a DT B-NP O 
+public JJ I-NP O 
+land-grant JJ I-NP O
+research NN I-NP O
+university NN I-NP O 
+. . O O 
+
+Early JJ B-NP O
+voting NN I-NP O
+in IN B-PP O
+Arizona NNP B-NP B-LOC
+. . O O 

@@ -1,0 +1,24 @@
+-DOCSTART- -X- -X- O
+
+Japan NNP B-NP B-LOC
+rejects VBZ B-VP O
+German JJ B-NP B-MISC
+call NN I-NP O
+to TO B-VP O
+boycott VB I-VP O
+British JJ B-NP B-MISC
+lamb NN I-NP O
+. . O O
+
+Tracking VBG B-VP O
+rain NN B-NP O
+in IN B-PP O
+Arizona NNP B-NP B-LOC
+'s POS O O
+monsoon NN B-NP O
+season NN I-NP O
+. . O O
+
+Helsinki NNP I-NP B-ORG
+Newsroom NNP I-NP I-ORG
+
