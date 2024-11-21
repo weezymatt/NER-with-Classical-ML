@@ -1,3 +1,9 @@
+Params: 
+    lambda_ = 1e-05  
+    epochs = 1000
+    lr = 0.1
+    fasttext embeddings (prev, curr)
+
 <ner_system.MEMM object at 0x16b3905d0>
 File: corpora/val/eng/eng.testa
 Accuracy: 0.97015303142401
@@ -15,9 +21,42 @@ Report:
 weighted avg       0.87      0.83      0.85      5942
 
 Total time: 213.28130316734314 seconds
+Correction: [TRUE] Change current tag to previous entity
 
-Params: 
-    lambda_ = 1e-05  
-    epochs = 1000
-    lr = 0.1
-    fasttext embeddings (prev, curr)
+<ner_system.MEMM object at 0x16b3905d0>
+File: corpora/val/eng/eng.testa
+Accuracy: 0.9689459133211323
+F1-score: 0.8294688373622758
+Report: 
+              precision    recall  f1-score   support
+
+         LOC       0.90      0.86      0.88      1837
+        MISC       0.81      0.77      0.79       922
+         ORG       0.80      0.72      0.75      1341
+         PER       0.88      0.90      0.89      1842
+
+   micro avg       0.86      0.83      0.84      5942
+   macro avg       0.85      0.81      0.83      5942
+weighted avg       0.86      0.83      0.84      5942
+
+Total time: 212.76905012130737 seconds
+Correction: [TRUE] Change current tag to 'O' entity
+
+<ner_system.MEMM object at 0x16b3905d0>
+File: corpora/val/eng/eng.testa
+Accuracy: 0.970698181534987
+F1-score: 0.8173870811073337
+Report: 
+              precision    recall  f1-score   support
+
+         LOC       0.90      0.86      0.88      1837
+        MISC       0.81      0.77      0.79       922
+         ORG       0.80      0.72      0.75      1341
+         PER       0.88      0.90      0.89      1842
+
+   micro avg       0.86      0.83      0.84      5942
+   macro avg       0.85      0.81      0.83      5942
+weighted avg       0.86      0.83      0.84      5942
+
+Total time: 213.1755199432373 seconds
+Correction: [FALSE] Assume prediction is correct.

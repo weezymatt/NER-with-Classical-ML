@@ -1,3 +1,9 @@
+Params:
+    lambda_ = 1e-05  
+    epochs = 1000
+    lr = 0.1
+    fasttext embeddings (prev, curr)
+
 <ner_system.MEMM object at 0x15488a590>
 File: corpora/test/eng/eng.testb
 Accuracy: 0.9567998277161623
@@ -15,9 +21,27 @@ Report:
 weighted avg       0.80      0.78      0.79      5648
 
 Total time: 208.3358030319214 seconds
+Correction: [TRUE] Change current tag to previous entity
 
-Params:
-    lambda_ = 1e-05  
-    epochs = 1000
-    lr = 0.1
-    fasttext embeddings (prev, curr)
+<ner_system.MEMM object at 0x16eb8d550>
+File: corpora/test/eng/eng.testb
+Accuracy: 0.9553354150963713
+F1-score: 0.7608639972679928
+Report: 
+              precision    recall  f1-score   support
+
+         LOC       0.80      0.82      0.81      1668
+        MISC       0.73      0.73      0.73       702
+         ORG       0.76      0.67      0.72      1661
+         PER       0.83      0.82      0.83      1617
+
+   micro avg       0.79      0.77      0.78      5648
+   macro avg       0.78      0.76      0.77      5648
+weighted avg       0.79      0.77      0.78      5648
+
+Total time: 206.64409971237183 seconds
+Correction: [TRUE] Change current tag to 'O' entity
+
+
+
+PENDING NO CORRECTION AT ALL FOR GREEDY AFTER ADDITION

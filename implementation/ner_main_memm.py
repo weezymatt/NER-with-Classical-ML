@@ -6,11 +6,12 @@ import numpy as np
 import time
 import pdb
 
-# TESTING FOR THE MEMM SYSTEM ONLY FOR ENGLISH. 
-# USES GRID SEARCH FOR THE BEST PARAMETERS
-
 def main(): 
-	# FINAL RESULTS: default decoding=GREEDY
+	'''
+	Testing for the MEMM system only on the English corpora. Grid search was used for 
+	hyperparameter tuning and resulted in the [best] parameters. The default decoding
+	strategy is greedy search.
+	'''
 	parser = argparse.ArgumentParser(description="Read the corpus.")
 	parser.add_argument('ENG_PATH_TR',
 						help="Path to training file with NE annotations.")
@@ -28,7 +29,6 @@ def main():
 
 	start_time = time.time()
 	ner_sys = ner_system.MEMM
-	# ner_sys = ner_sys(tr_sents)
 	ner_sys = ner_sys(tr_sents, regularization=lambda_, max_iters=epochs, eta=lr)
 
 	ner_sys.label(te_pred)
@@ -45,10 +45,11 @@ def main():
 if __name__ == '__main__':
 	main()
 
-# TESTING FOR THE MEMM SYSTEM ONLY FOR ENGLISH. 
-# USES GRID SEARCH FOR THE BEST PARAMETERS
-
-# if __name__ == '__main__': # 
+# if __name__ == '__main__':
+# 	'''
+# 	Script for testing the hyperparameters (i.e., epochs, regularization, and eta)
+# 	for the MEMM system.
+# 	'''
 # 	parser = argparse.ArgumentParser(description="Read the corpus.")
 # 	parser.add_argument('ENG_PATH_TR',
 # 						help="Path to training file with NE annotations.")
@@ -62,9 +63,6 @@ if __name__ == '__main__':
 
 # 	#GRID SEARCH
 # 	# hyperparams_epochs = [1000, 2000, 3000, 4000, 5000, 6000] # best 1000
-# 	epochs=1000 # best; likely get's stuck in local mininum!
-# 	lr = 0.1
-# 	lambda_ = 0.00001
 # 	hyperparams_reg = [1.0, 0.1, 0.01, 0.001, 0.0001, 0.00001] 
 # 	hyperparams_lr = [0.1, 0.01, 0.001, 0.0001, 0.00001]
 

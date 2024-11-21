@@ -294,8 +294,9 @@ class MEMM(NERecognition):
 				else: 
 					prev_embedding = csr_matrix(self.get_embeddings(sentence[i-1].word, self.embeddings))
 				curr_embeddings = csr_matrix(self.get_embeddings(token.word, self.embeddings))
-				sparse_embeddings = hstack([prev_embedding, curr_embeddings])
-
+				sparse_embeddings = hstack([prev_embedding, curr_embeddings]) #concatenation
+				# sparse_embeddings = (prev_embedding.todense() + curr_embeddings.todense()) #addition /2
+				sparse_embeddings = csr_matrix(sparse_embeddings)
 				all_embeddings.append(sparse_embeddings) 
 
 		embedding_matrix = vstack(all_embeddings)
@@ -309,8 +310,8 @@ class MEMM(NERecognition):
 		@params sentence:  sentence
 		@return ne_labels: tag sequence of ne labels
 		'''
-		# ne_labels = self.greedy_sequence_decoding(sentence)
-		ne_labels = self.viterbi(sentence)
+		ne_labels = self.greedy_sequence_decoding(sentence) # DEFAULT DECODING STRATEGY
+		# ne_labels = self.viterbi(sentence)
 		return ne_labels
 
 	def greedy_sequence_decoding(self, sentence):
@@ -342,7 +343,9 @@ class MEMM(NERecognition):
 			else:
 				prev_embedding = csr_matrix(self.get_embeddings(sentence[i-1].word, self.embeddings))					
 			curr_embeddings = csr_matrix(self.get_embeddings(token.word, self.embeddings))
-			sparse_embeddings = hstack([prev_embedding, curr_embeddings])
+			sparse_embeddings = hstack([prev_embedding, curr_embeddings]) # concatenation
+			# sparse_embeddings = (prev_embedding.todense() + curr_embeddings.todense()) # addition /2
+			sparse_embeddings = csr_matrix(sparse_embeddings)
 
 			total_feats = hstack([encoded_feats, sparse_embeddings]) 
 			encoded_prediction = self.model.predict(total_feats)
@@ -419,22 +422,28 @@ class MEMM(NERecognition):
 
 			for i, token in enumerate(sentence[1:-1]):
 				token.ne = labels[i]
+			print(f"{k} sentence DONE!")
 
-		# Hack to catch mistakes from greedy decoding but what about viterbi?
-		# for k, sentence in enumerate(sentences):
-		# 	sentence = sentence[1:-1]
-		# 	for i, token in enumerate(sentence):
-		# 		if i != 0:
-		# 			prev_ne = sentence[i-1].ne
-		# 			curr_ne = token.ne 
-		# 			if prev_ne[0] == 'B' and prev_ne[-3:] != curr_ne[-3:] and curr_ne[0] == 'I':
-		# 				if prev_ne.endswith('LOC'): 
-		# 					token.ne = 'I-LOC'
-		# 				elif prev_ne.endswith('PER'):
-		# 					token.ne = 'I-PER'
-		# 				elif prev_ne.endswith('MISC'):
-		# 					token.ne = 'I-MISC'
-		# 				elif prev_ne.endswith('ORG'):
-		# 					token.ne = 'I-ORG'
+		# Hack to catch mistakes from classifier output of label sequence
+		# greedy decoding but what about viterbi?
+		for k, sentence in enumerate(sentences):
+			sentence = sentence[1:-1]
+			for i, token in enumerate(sentence):
+				if i != 0:
+					prev_ne = sentence[i-1].ne
+					curr_ne = token.ne 
+					if prev_ne[0] == 'B' and prev_ne[-3:] != curr_ne[-3:] and curr_ne[0] == 'I':
+						if prev_ne.endswith('LOC'): 
+							token.ne = 'I-LOC'
+							# token.ne = 'O'
+						elif prev_ne.endswith('PER'):
+							token.ne = 'I-PER'
+							# token.ne = 'O'
+						elif prev_ne.endswith('MISC'):
+							token.ne = 'I-MISC'
+							# token.ne = 'O'
+						elif prev_ne.endswith('ORG'):
+							token.ne = 'I-ORG'
+							# token.ne = 'O'
 
-		# 	print(f"{k} sentence DONE!") 
+			print(f"{k} sentence CLEANED!") 
