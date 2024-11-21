@@ -12,7 +12,6 @@ from sklearn.preprocessing import LabelEncoder
 from sklearn.feature_extraction import DictVectorizer
 import gensim.downloader as api
 import spacy
-import LogisticRegression as lr 
 
 class NERecognition(ABC):
 	@abstractmethod
@@ -194,7 +193,6 @@ class MEMM(NERecognition):
 		self.nlp = spacy.blank('en')
 		self.embeddings = api.load("fasttext-wiki-news-subwords-300")
 		# self.embeddings = api.load('word2vec-google-news-300')
-		self.model = lr.SGDClassifier()
 		self.model = SGDClassifier(penalty='l2', alpha=regularization, loss='log_loss', max_iter=max_iters, eta0=eta, learning_rate='constant', random_state=42)
 		self.create_data(sentences)
 		self.model.fit(self.X, self.y)
