@@ -1,0 +1,23 @@
+<ner_system.MEMM object at 0x16b3905d0>
+File: corpora/val/eng/eng.testa
+Accuracy: 0.97015303142401
+F1-score: 0.8385716636498272
+Report: 
+              precision    recall  f1-score   support
+
+         LOC       0.92      0.88      0.90      1837
+        MISC       0.80      0.76      0.78       922
+         ORG       0.80      0.72      0.76      1341
+         PER       0.89      0.91      0.90      1842
+
+   micro avg       0.87      0.83      0.85      5942
+   macro avg       0.85      0.82      0.83      5942
+weighted avg       0.87      0.83      0.85      5942
+
+Total time: 213.28130316734314 seconds
+
+Params: 
+    lambda_ = 1e-05  
+    epochs = 1000
+    lr = 0.1
+    fasttext embeddings (prev, curr)

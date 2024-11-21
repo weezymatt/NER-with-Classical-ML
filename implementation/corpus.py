@@ -1,5 +1,5 @@
 import argparse
-import pdb
+import numpy as np
 
 class Token:
 	def __init__(self, word, pos, chunk, ne):
@@ -10,14 +10,6 @@ class Token:
 
 	def __str__(self):
 		return f"{self.word} {self.pos} {self.chunk} {self.ne}"
-
-class DeuToken:
-	def __init__(self, word, lemma, pos, chunk, ne):
-		self.word = word
-		self.lemma = lemma
-		self.pos = pos
-		self.chunk = chunk
-		self.ne = ne
 
 class EspToken:
 	def __init__(self, word, ne):
@@ -65,5 +57,28 @@ def add_padding(sentences):
 		sentence.insert(0, Token('<s>','<s>','<s>', '<s>'))
 		sentence.append(Token('</s>','</s>','</s>', '</s>'))
 
+def read_gazetteers(text_file):
+	dictionary = {}
+
+	with open(text_file, "r", encoding='latin-1') as f:
+		for line in f:
+			parts = line.strip().split(" ",1)
+			entity_type, entity_name = parts
+
+			if entity_type not in dictionary and entity_type in ['LOC','ORG','MISC','PER']:
+				dictionary[entity_type] = set()
+			if entity_type in dictionary:
+				dictionary[entity_type].add(entity_name.lower())
+
+	return dictionary
+
 # python3 implementation/corpus.py corpora/train/eng/eng.train
+
+if __name__ == '__main__':
+	parser = argparse.ArgumentParser(description="Read gazetteers")
+	parser.add_argument('GAZETEER_PATH')
+	args = parser.parse_args()
+
+	data = read_gazeteers(args.GAZETEER_PATH)
+
 
