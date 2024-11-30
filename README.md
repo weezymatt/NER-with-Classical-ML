@@ -74,7 +74,7 @@ Two baseline systems AlwaysNonEntity and SingleEntity were computed for the Engl
 | `AlwaysNonEntity`   | 88.0     | 0.0     |
 | `SingleEntity`      | 74.4     | **16.9** |
 
-Therefore, we adopt exact-match (macro-F1) as stated by Tjong Kim Sang and De Meulder [6], “precision is the percentage of NEs that are correct. Recall is the percentage of NEs in the corpus. A NE is correct only if it is an exact match of the corresponding entity.”
+Therefore, we adopt exact-match (macro-F1) as stated by Tjong Kim Sang and De Meulder [1], “precision is the percentage of NEs that are correct. Recall is the percentage of NEs in the corpus. A NE is correct only if it is an exact match of the corresponding entity.”
 
 ## Main System
 The main NER system is located in ```implementation/ner_main.py``` and reports the results for the two baselines and Hidden Markov Model on the English/Spanish dataset.
@@ -115,3 +115,6 @@ The `(Me)` caption indicates the model is built from scratch.
 | Run Description | Decoding | Test | LOC  | MISC | ORG  | PER  | Overall  |
 |-----------------|----------|------|------|------|------|------|----------|
 | 1. HM(Me)       | Greedy   | Test | 71.  | 37.  | 72.  | 69.  | **67.5** |
+
+## Citations
+[1] Erik F. Tjong Kim Sang and Fien De Meulder. Introduction to the CoNLL-2003 Shared Task: Language-Independent Named Entity Recognition. In: Proceedings of CoNLL-2003. Edmonton, Canada, 2003.
