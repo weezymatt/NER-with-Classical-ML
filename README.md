@@ -10,30 +10,7 @@ This project was created for the purpose of applying techniques in Machine Learn
 
 > **Note 2** The Hidden Markov Model, Maximum Entropy, and all decoding strategies are built from scratch. The analysis in the paper compares the models built from scratch with the scikit-learn's version of Logistic Regression.
 
-## Table of Contents
-- [Objective](#objective)
-- [Virtual Environment](#virtual-environment)
-- [Structure](#structure)
-- [Baselines](#baselines)
-- [Main System](#NER-main-ner)
-- [MEMM System](#MEMM-ner)
-- [Baselines & Benchmarks](#baselines-&-benchmarks)
-
-## Objective
-This repository presents a brief survey on classical machine learning algorithms in the context of the CoNNL-2003 Shared Task. A Named Entity Recognition (NER) system is built to recognize and classify objects in a body of text into predefined categories. The paper includes a principled framework that motivates the use of machine learning. Finally, the paper includes an analysis between generative and discriminative machine learning algorithms with various decoding methods for inference.
-
-## Virtual Environment
-The environment can be replicated with a virtual environment. Please follow the directions below to run the experiments from the paper.
-
-```bash
-$ git clone YOUR_REPO
-$ cd NER-with-Classical-Machine-Learning
-$ python3 -m venv .env
-$ source .env/bin/activate
-$ pip install -r requirements.txt
-```
-## Structure
-The structure of the repository is as follows:
+The directory layout is shown below.
 
 ```bash
 .
@@ -57,6 +34,29 @@ The structure of the repository is as follows:
 ├── requirements.txt        
 ```
 
+
+## Table of Contents
+- [Objective](#objective)
+- [Virtual Environment](#virtual-environment)
+- [Structure](#structure)
+- [Baselines](#baselines)
+- [Main System](#NER-main-ner)
+- [MEMM System](#MEMM-ner)
+- [Baselines & Benchmarks](#baselines-&-benchmarks)
+
+## Objective
+This repository presents a brief survey on classical machine learning algorithms in the context of the CoNNL-2003 Shared Task. A Named Entity Recognition (NER) system is built to recognize and classify objects in a body of text into predefined categories. The paper includes a principled framework that motivates the use of machine learning. Finally, the paper includes an analysis between generative and discriminative machine learning algorithms with various decoding methods for inference.
+
+## Virtual Environment
+The environment can be replicated with a virtual environment. Please follow the directions below to run the experiments from the paper.
+
+```bash
+$ git clone YOUR_REPO
+$ cd NER-with-Classical-Machine-Learning
+$ python3 -m venv .env
+$ source .env/bin/activate
+$ pip install -r requirements.txt
+```
 
 ## Baselines
 Two baseline systems AlwaysNonEntity and SingleEntity were computed for the English and Spanish corpora. As evidenced with the AlwaysNonEntity baseline, the token-level accuracy has a modest 80% but is meaningless for NEs. The improved baseline SingleEntity labels entities only if they appear in the training data.
@@ -83,21 +83,24 @@ The main NER system is located in ```implementation/ner_main.py``` and reports t
 python3 implementation/ner_main.py corpora/train/eng/eng.train corpora/val/eng/eng.testa corpora/test/eng/eng.testb corpora/train/esp/esp.train corpora/test/esp/esp.testb
 ```
 ## (MEMM) System
-The improved NER system is located in ```implementation/ner_main_memm.py``` and reports the results of the Maximum-entropy model on the English dataset. The default ME model is the SGDClassifier from scikit-learn and expected run time is around 3 minutes. We do not advise the user to switch the model to the (Me)MM because training time is significant. 
+The improved NER system is located in ```implementation/ner_main_memm.py``` and reports the results of the Maximum-entropy model on the English dataset. The default ME model is the SGDClassifier from scikit-learn and expected run time is around 3 minutes.
+
+> We do not advise the user to switch the model to the (Me)MM because training time is significant. 
 
 1. Validation set
-  ```bash
-  python3 implementation/ner_main.py corpora/train/eng/eng.train corpora/val/eng/eng.testa
-  ```
+```bash
+python3 implementation/ner_main.py corpora/train/eng/eng.train corpora/val/eng/eng.testa
+```
+
 2. Test set
-   ```bash
-   python3 implementation/ner_main.py corpora/train/eng/eng.train corpora/test/eng/eng.testb
-   ```
+```bash
+python3 implementation/ner_main.py corpora/train/eng/eng.train corpora/test/eng/eng.testb
+```
 
 ## Results
-### English Evaluation on Tuned Models
-
 The `(Me)` caption indicates the model is built from scratch. Models with the `-sk` suffix are imported from Scikit-learn.
+
+### English Evaluation on Tuned Models
 
 | Run Description     | Decoding | Test/Val | LOC  | MISC | ORG  | PER  | Overall  |
 |---------------------|----------|----------|------|------|------|------|----------|
@@ -109,8 +112,6 @@ The `(Me)` caption indicates the model is built from scratch. Models with the `-
 |                     |          | Test     | 80.  | 72.  | 62.  | 57.  | 68.45    |
 
 ### Spanish Evaluation on Tuned Model
-
-The `(Me)` caption indicates the model is built from scratch.
 
 | Run Description | Decoding | Test | LOC  | MISC | ORG  | PER  | Overall  |
 |-----------------|----------|------|------|------|------|------|----------|
