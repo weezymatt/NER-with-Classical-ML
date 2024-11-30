@@ -1,6 +1,7 @@
 # Revisiting CoNNL-2003 with Classical Machine Learning
 Contributors: Matthew A Hernandez
-> **Note** Access to our paper [here](https://github.com/weezymatt/Retrieval-with-Wordle/blob/main/Retrieval-with-Wordle.pdf)
+> **Note** Access to our paper [here](https://github.com/weezymatt/NER-with-Classical-Machine-Learning/blob/main/reports/INFO_521_report.pdf)
+
 
 Last updated November 21st, 2024
 
