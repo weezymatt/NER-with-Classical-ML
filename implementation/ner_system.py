@@ -12,6 +12,7 @@ from sklearn.preprocessing import LabelEncoder
 from sklearn.feature_extraction import DictVectorizer
 import gensim.downloader as api
 import spacy
+from models import SGDClassifier as lr
 
 class NERecognition(ABC):
 	@abstractmethod
@@ -184,7 +185,7 @@ class MEMM(NERecognition):
 	Regression. Naively, the model can be understood as applying the classifier at each 
 	time step using the current configuration as features.
 	'''
-	def __init__(self, sentences, regularization=1.0000, max_iters=1000, eta=0.01): # default = 0.00001
+	def __init__(self, sentences, regularization=1e-07, max_iters=10, eta=0.1): 
 		self.label_encoder = LabelEncoder()
 		self.feature_encoder = DictVectorizer()
 		self.org_gazetteers = corpus.read_gazetteers('implementation/gazetteers/ned.list.ORG') 
@@ -192,8 +193,9 @@ class MEMM(NERecognition):
 		self.per_gazetteers = corpus.read_gazetteers('implementation/gazetteers/ned.list.PER')
 		self.nlp = spacy.blank('en')
 		self.embeddings = api.load("fasttext-wiki-news-subwords-300")
-		# self.embeddings = api.load('word2vec-google-news-300')
-		self.model = SGDClassifier(penalty='l2', alpha=regularization, loss='log_loss', max_iter=max_iters, eta0=eta, learning_rate='constant', random_state=42)
+		# self.embeddings = api.load('word2vec-google-news-300') # used for quicker testing
+		self.model = lr.SGDClassifier(max_iters=max_iters, eta0=eta, C=regularization)
+		# self.model = SGDClassifier(penalty='l2', alpha=regularization, loss='log_loss', max_iter=max_iters, eta0=eta, learning_rate='constant', random_state=42)
 		self.create_data(sentences)
 		self.model.fit(self.X, self.y)
 
@@ -422,8 +424,8 @@ class MEMM(NERecognition):
 				token.ne = labels[i]
 			print(f"{k} sentence DONE!")
 
-		# Hack to catch mistakes from classifier output of label sequence
-		# greedy decoding but what about viterbi?
+		# Hack to clean label sequence (output of classifier)
+		# Performance improves when used
 		for k, sentence in enumerate(sentences):
 			sentence = sentence[1:-1]
 			for i, token in enumerate(sentence):

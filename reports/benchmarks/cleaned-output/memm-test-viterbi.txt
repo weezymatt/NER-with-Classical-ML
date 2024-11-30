@@ -1,0 +1,62 @@
+Params:
+    lambda_ = 1e-05  
+    epochs = 1000
+    lr = 0.1
+    fasttext embeddings (prev, curr)
+
+<ner_system.MEMM object at 0x169587a90>
+File: corpora/test/eng/eng.testb
+Accuracy: 0.924238182405513
+F1-score: 0.6113788147772423
+Report: 
+              precision    recall  f1-score   support
+
+         LOC       0.79      0.75      0.77      1668
+        MISC       0.69      0.63      0.66       702
+         ORG       0.66      0.50      0.57      1661
+         PER       0.45      0.39      0.41      1617
+
+   micro avg       0.64      0.56      0.60      5648
+   macro avg       0.65      0.57      0.60      5648
+weighted avg       0.64      0.56      0.59      5648
+
+Total time: 4109.720708847046 seconds
+Correction [TRUE] Change current w.r.t previous entity.
+
+<ner_system.MEMM object at 0x1687ffb90>
+File: corpora/test/eng/eng.testb
+Accuracy: 0.9217616022396898
+F1-score: 0.5937130302518169
+Report: 
+              precision    recall  f1-score   support
+
+         LOC       0.76      0.72      0.74      1668
+        MISC       0.72      0.66      0.69       702
+         ORG       0.65      0.50      0.56      1661
+         PER       0.40      0.35      0.37      1617
+
+   micro avg       0.62      0.54      0.58      5648
+   macro avg       0.63      0.55      0.59      5648
+weighted avg       0.62      0.54      0.58      5648
+
+Total time: 10007.193607330322 seconds
+Correction: [TRUE] Change current tag to 'O' entity.
+
+<ner_system.MEMM object at 0x179a98110>
+File: corpora/test/eng/eng.testb
+Accuracy: 0.9238074728114569
+F1-score: 0.582010582010582
+Report: 
+              precision    recall  f1-score   support
+
+         LOC       0.76      0.72      0.74      1668
+        MISC       0.72      0.66      0.69       702
+         ORG       0.65      0.50      0.56      1661
+         PER       0.40      0.35      0.37      1617
+
+   micro avg       0.62      0.54      0.58      5648
+   macro avg       0.63      0.55      0.59      5648
+weighted avg       0.62      0.54      0.58      5648
+
+Total time: 26140.443644046783 seconds
+Correction: [FALSE] Assume Viterbi is correct.

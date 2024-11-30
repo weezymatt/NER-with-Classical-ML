@@ -6,6 +6,10 @@ import numpy as np
 import time
 import pdb
 
+
+
+# python3 implementation/ner_main_memm.py corpora/train/eng/eng.train corpora/val/eng/eng.testa
+# python3 implementation/ner_main_memm.py corpora/train/eng/eng.train corpora/test/eng/eng.testb
 def main(): 
 	'''
 	Testing for the MEMM system only on the English corpora. Grid search was used for 
@@ -16,16 +20,16 @@ def main():
 	parser.add_argument('ENG_PATH_TR',
 						help="Path to training file with NE annotations.")
 	parser.add_argument('ENG_PATH_TE',
-						help="Path to testing file with NE annotations.")
+						help="Path to validation/testing file with NE annotations.")
 	args = parser.parse_args()
 	tr_sents = corpus.read_conll_data(args.ENG_PATH_TR, encoding='utf-8', lang='eng')
 	te_gold = corpus.read_conll_data(args.ENG_PATH_TE, encoding='utf-8', lang='eng')
 	te_pred = corpus.read_conll_data(args.ENG_PATH_TE, test=True, encoding='utf-8', lang='eng')
 
-	# Tuning per grid search
-	lambda_ = 1e-05  
-	epochs = 1000
+	# Tuning per grid search; default model
+	lambda_ = 1e-07  
 	lr = 0.1
+	epochs = 10 
 
 	start_time = time.time()
 	ner_sys = ner_system.MEMM
