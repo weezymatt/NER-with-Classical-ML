@@ -23,10 +23,10 @@ This project was created for the purpose of applying techniques in Machine Learn
 │   ├── models/             # SGDClassifier (scratch)
 │   ├── utils/              # Utilities for reporting accuracy and exact-entity eval
 │   ├── corpus.py           # Script to read the CoNLL data
-│   ├── ner_main.py         # NER system containing all models
-│   ├── ner_main_memm.py    # Script to train the MEMM and report results
+│   ├── ner_main.py         # The full NER system 
+│   ├── ner_main_memm.py    # Script to train MEMM and report results
 │   ├── ner_memm_grid.py    # Script to use grid search for tuning
-│   └── ner_system.py       # Script to train the HMM and report results
+│   └── ner_system.py       # Script to train HMM and report results
 ├── reports/                # Text files of various reports
 │   └── benchmarks/         
 │   └── grid-search/     
@@ -40,9 +40,10 @@ This project was created for the purpose of applying techniques in Machine Learn
 - [Virtual Environment](#virtual-environment)
 - [Structure](#structure)
 - [Baselines](#baselines)
-- [Main System](#NER-main-ner)
-- [MEMM System](#MEMM-ner)
-- [Baselines & Benchmarks](#baselines-&-benchmarks)
+- [Main System](#main-system)
+- [Improved System](#improved-system)
+- [Results](#results)
+- [Citations](#citations)
 
 ## Objective
 This repository presents a brief survey on classical machine learning algorithms in the context of the CoNNL-2003 Shared Task. A Named Entity Recognition (NER) system is built to recognize and classify objects in a body of text into predefined categories. The paper includes a principled framework that motivates the use of machine learning. Finally, the paper includes an analysis between generative and discriminative machine learning algorithms with various decoding methods for inference.
@@ -60,14 +61,14 @@ $ pip install -r requirements.txt
 
 ## Baselines
 Two baseline systems AlwaysNonEntity and SingleEntity were computed for the English and Spanish corpora. As evidenced with the AlwaysNonEntity baseline, the token-level accuracy has a modest 80% but is meaningless for NEs. The improved baseline SingleEntity labels entities only if they appear in the training data.
-### English Dev and Test Set
+#### English Dev and Test Set
 
 | Model               | Dev Acc | Dev F1 | Test Acc | Test F1 |
 |---------------------|---------|--------|----------|---------|
 | `AlwaysNonEntity`   | 83.2    | 0.0    | 82.2     | 0.0     |
 | `SingleEntity`      | 86.2    | 40.0   | 84.8     | **35.3** |
 
-### Spanish Test Set
+#### Spanish Test Set
 
 | Model               | Test Acc | Test F1 |
 |---------------------|----------|---------|
@@ -82,7 +83,7 @@ The main NER system is located in ```implementation/ner_main.py``` and reports t
 ```bash
 python3 implementation/ner_main.py corpora/train/eng/eng.train corpora/val/eng/eng.testa corpora/test/eng/eng.testb corpora/train/esp/esp.train corpora/test/esp/esp.testb
 ```
-## (MEMM) System
+## Improved System
 The improved NER system is located in ```implementation/ner_main_memm.py``` and reports the results of the Maximum-entropy model on the English dataset. The default ME model is the SGDClassifier from scikit-learn and expected run time is around 3 minutes.
 
 > We do not advise the user to switch the model to the (Me)MM because training time is significant. 
@@ -100,7 +101,7 @@ python3 implementation/ner_main.py corpora/train/eng/eng.train corpora/test/eng/
 ## Results
 The `(Me)` caption indicates the model is built from scratch. Models with the `-sk` suffix are imported from Scikit-learn.
 
-### English Evaluation on Tuned Models
+#### English Evaluation on Tuned Models
 
 | Run Description     | Decoding | Test/Val | LOC  | MISC | ORG  | PER  | Overall  |
 |---------------------|----------|----------|------|------|------|------|----------|
@@ -111,7 +112,7 @@ The `(Me)` caption indicates the model is built from scratch. Models with the `-
 | 3. HM(Me)           | Viterbi  | Val      | 86.  | 82.  | 71.  | 76.  | 79.01    |
 |                     |          | Test     | 80.  | 72.  | 62.  | 57.  | 68.45    |
 
-### Spanish Evaluation on Tuned Model
+#### Spanish Evaluation on Tuned Model
 
 | Run Description | Decoding | Test | LOC  | MISC | ORG  | PER  | Overall  |
 |-----------------|----------|------|------|------|------|------|----------|
