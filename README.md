@@ -10,7 +10,7 @@ This project was created for the purpose of applying techniques in Machine Learn
 
 > **Note 2** The Hidden Markov Model, Maximum Entropy, and all decoding strategies are built from scratch. The analysis in the paper compares the models built from scratch with the scikit-learn's version of Logistic Regression.
 
-The directory layout is shown below.
+## Directory Layout
 
 ```bash
 .
