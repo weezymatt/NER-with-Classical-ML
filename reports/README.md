@@ -33,11 +33,11 @@ The table below shows the tuned models with $\lambda$=0.1, $\eta$=0.1, epochs=15
 | Run Description         | Decoding | Test | LOC  | MISC | ORG  | PER  | Overall |
 |-------------------------|----------|------|------|------|------|------|---------|
 | MEMM-sk  | Greedy  | Val  | 89.0 | 79.0 | 75.0 | 89.0 | **84.0** |
-| $\lambda$=.1, $\eta$=.1, eps=15  |          | Test | 84.0 | 72.0 | 70.0 | 83.0 | **78.0** |
+|    |          | Test | 84.0 | 72.0 | 70.0 | 83.0 | **78.0** |
 | (Me)MM | Greedy  | Val  | 90.0 | 79.0 | 74.0 | 88.0 | **84.0** |
-|  $\lambda$=.1, $\eta$=.1, eps=15 |          | Test | 84.0 | 70.0 | 69.0 | 83.0 | **78.0** |
+|    |          | Test | 84.0 | 70.0 | 69.0 | 83.0 | **78.0** |
 | HM(Me)       | Viterbi | Val  | 86.0 | 82.0 | 71.0 | 76.0 | 79.0   |
-|  $\alpha$=100   |          | Test | 80.0 | 72.0 | 62.0 | 57.0 | 69.0   |
+|     |          | Test | 80.0 | 72.0 | 62.0 | 57.0 | 69.0   |
 
 
 The table below shows the Spanish evaluation on the tuned model with $\alpha=100$. The `(Me)` caption indicates the model was built from scratch.
