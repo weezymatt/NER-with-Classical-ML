@@ -60,24 +60,6 @@ $ source .env/bin/activate
 $ pip install -r requirements.txt
 ```
 
-## Baselines
-Two baseline systems AlwaysNonEntity and SingleEntity were computed for the English and Spanish corpora. As evidenced with the AlwaysNonEntity baseline, the token-level accuracy has a modest 80% but is meaningless for NEs. The improved baseline SingleEntity labels entities only if they appear in the training data.
-#### English Dev and Test Set
-
-| Model               | Dev Acc | Dev F1 | Test Acc | Test F1 |
-|---------------------|---------|--------|----------|---------|
-| `AlwaysNonEntity`   | 83.2    | 0.0    | 82.2     | 0.0     |
-| `SingleEntity`      | 86.2    | 40.0   | 84.8     | **35.3** |
-
-#### Spanish Test Set
-
-| Model               | Test Acc | Test F1 |
-|---------------------|----------|---------|
-| `AlwaysNonEntity`   | 88.0     | 0.0     |
-| `SingleEntity`      | 74.4     | **16.9** |
-
-Therefore, we adopt exact-match (macro-F1) as stated by Tjong Kim Sang and De Meulder [1], “precision is the percentage of NEs that are correct. Recall is the percentage of NEs in the corpus. A NE is correct only if it is an exact match of the corresponding entity.”
-
 ## Main System
 The main NER system is located in ```implementation/ner_main.py``` and reports the results for the two baselines and Hidden Markov Model on the English/Spanish dataset.
 
