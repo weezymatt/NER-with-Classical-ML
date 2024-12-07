@@ -1,0 +1,92 @@
+[features]
+File: corpora/val/eng/eng.testa
+Accuracy: 0.9351660760873798
+F1-score: *0.7000972981064292
+Report: 
+              precision    recall  f1-score   support
+
+         LOC       0.85      0.81      0.83      1837
+        MISC       0.56      0.71      0.62       922
+         ORG       0.71      0.66      0.68      1341
+         PER       0.81      0.83      0.82      1842
+
+   micro avg       0.75      0.76      0.76      5942
+   macro avg       0.73      0.75      0.74      5942
+weighted avg       0.76      0.76      0.76      5942
+
+Total time: 79.710280418396 seconds
+
+[features + gazetteers]
+File: corpora/val/eng/eng.testa
+Accuracy: 0.959853588255909
+F1-score: *0.7773816433131582
+Report: 
+              precision    recall  f1-score   support
+
+         LOC       0.89      0.82      0.85      1837
+        MISC       0.73      0.76      0.74       922
+         ORG       0.78      0.65      0.71      1341
+         PER       0.86      0.79      0.82      1842
+
+   micro avg       0.83      0.76      0.80      5942
+   macro avg       0.81      0.76      0.78      5942
+weighted avg       0.83      0.76      0.79      5942
+
+Total time: 82.24057817459106 seconds
+
+[features + gazetteers + curr_emb]
+<ner_system.MEMM object at 0x174694f90>
+File: corpora/val/eng/eng.testa
+Accuracy: 0.9698609867217008
+F1-score: 0.8372207218266634
+Report: 
+              precision    recall  f1-score   support
+
+         LOC       0.92      0.88      0.90      1837
+        MISC       0.82      0.77      0.79       922
+         ORG       0.75      0.75      0.75      1341
+         PER       0.90      0.88      0.89      1842
+
+   micro avg       0.86      0.83      0.85      5942
+   macro avg       0.85      0.82      0.83      5942
+weighted avg       0.86      0.83      0.85      5942
+
+Total time: 114.34265518188477 seconds
+
+[features + gazetteers + prev_emb + curr_emb] **DEFAULT/BEST**
+<ner_system.MEMM object at 0x168ab72d0>
+File: corpora/val/eng/eng.testa
+Accuracy: 0.970250379658113
+F1-score: 0.8360386948680112
+Report: 
+              precision    recall  f1-score   support
+
+         LOC       0.91      0.88      0.89      1837
+        MISC       0.81      0.77      0.79       922
+         ORG       0.74      0.76      0.75      1341
+         PER       0.91      0.88      0.89      1842
+
+   micro avg       0.86      0.83      0.84      5942
+   macro avg       0.84      0.82      0.83      5942
+weighted avg       0.86      0.83      0.85      5942
+
+Total time: 150.3315007686615 seconds
+
+[feats + gazetteers + prev_emb + curr_emb + next_emb]
+<ner_system.MEMM object at 0x1439bfb10>
+File: corpora/val/eng/eng.testa
+Accuracy: 0.968614929325182
+F1-score: *0.823942511840601
+Report: 
+              precision    recall  f1-score   support
+
+         LOC       0.92      0.86      0.89      1837
+        MISC       0.74      0.79      0.76       922
+         ORG       0.74      0.74      0.74      1341
+         PER       0.88      0.88      0.88      1842
+
+   micro avg       0.84      0.83      0.83      5942
+   macro avg       0.82      0.82      0.82      5942
+weighted avg       0.84      0.83      0.83      5942
+
+Total time: 194.94129300117493 seconds

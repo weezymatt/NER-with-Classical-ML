@@ -9,6 +9,8 @@ if __name__ == '__main__':
 	'''
 	Script for testing the hyperparameters (i.e., epochs, regularization, and eta)
 	for the MEMM system.
+
+	* Handle non-convergence implicitly next time.
 	'''
 	parser = argparse.ArgumentParser(description="Read the corpus.")
 	parser.add_argument('ENG_PATH_TR',
@@ -21,17 +23,17 @@ if __name__ == '__main__':
 	te_gold = corpus.read_conll_data(args.ENG_PATH_TE, encoding='utf-8', lang='eng')
 	te_pred = corpus.read_conll_data(args.ENG_PATH_TE, test=True, encoding='utf-8', lang='eng')
 
-	#GRID SEARCH — Improve by nested for-loops instead.
-	hyperparams_reg = [1e-03, 1e-04, 1e-05, 1e-06, 1e-07]
-	hyperparams_lr = [1e-01, 1e-02, 1e-03, 1e-04, 1e-05]
-	hyperparams_epochs = [1, 5, 10, 15, 20]
+	#GRID SEARCH 
+	hyperparams_reg = [1e-04, 1e-05, 1e-06, 1e-07]
+	hyperparams_lr = [1e-01, 1e-02, 1e-03, 1e-04]
+	hyperparams_epochs = [5, 10, 15, 20]
 
 	max_f1 = float('-inf')
-	# grid_1 = np.zeros([len(hyperparams_reg), len(hyperparams_lr)])
-	# grid_2 = np.zeros([len(hyperparams_reg), len(hyperparams_epochs)])
+	grid_1 = np.zeros([len(hyperparams_reg), len(hyperparams_lr)])
+	grid_2 = np.zeros([len(hyperparams_reg), len(hyperparams_epochs)])
 	grid_3 = np.zeros([len(hyperparams_lr), len(hyperparams_epochs)])
 
-	# def_epochs = 15
+	# def_epochs = 15 # SET
 	# for idx1, lambda_ in enumerate(hyperparams_reg):
 	# 	for idx2, lr in enumerate(hyperparams_lr):
 	# 		print(f"New system initialized! {(lambda_, lr)}")
@@ -44,7 +46,7 @@ if __name__ == '__main__':
 	# 			max_f1 = f1
 	# 			best_combo = tuple((lambda_, lr, report))
 
-	# def_lr = 0.1
+	# def_lr = 0.1 # SET
 	# for idx1, lambda_ in enumerate(hyperparams_reg):
 	# 	for idx2, epochs in enumerate(hyperparams_epochs):
 	# 		print(f"New system initialized! {(lambda_, epochs)}")
@@ -57,7 +59,7 @@ if __name__ == '__main__':
 	# 			max_f1 = f1
 	# 			best_combo = tuple((lambda_, epochs, report))
 
-	def_lambda = 1e-07
+	def_lambda = 1e-06
 	for idx1, epochs in enumerate(hyperparams_epochs):
 		for idx2, lr in enumerate(hyperparams_lr):
 			print(f"New system initialized! {(epochs, lr)}")

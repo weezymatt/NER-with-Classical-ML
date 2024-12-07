@@ -192,10 +192,9 @@ class MEMM(NERecognition):
 		self.misc_gazetteers = corpus.read_gazetteers('implementation/gazetteers/ned.list.MISC')
 		self.per_gazetteers = corpus.read_gazetteers('implementation/gazetteers/ned.list.PER')
 		self.nlp = spacy.blank('en')
-		self.embeddings = api.load("fasttext-wiki-news-subwords-300")
-		# self.embeddings = api.load('word2vec-google-news-300') # used for quicker testing
-		self.model = lr.SGDClassifier(max_iters=max_iters, eta0=eta, C=regularization)
-		# self.model = SGDClassifier(penalty='l2', alpha=regularization, loss='log_loss', max_iter=max_iters, eta0=eta, learning_rate='constant', random_state=42)
+		self.embeddings = api.load('word2vec-google-news-300') 
+		# self.model = lr.SGDClassifier(max_iters=max_iters, eta0=eta, C=regularization)
+		self.model = SGDClassifier(penalty='l2', alpha=regularization, loss='log_loss', max_iter=max_iters, eta0=eta, learning_rate='constant', random_state=42)
 		self.create_data(sentences)
 		self.model.fit(self.X, self.y)
 
@@ -295,7 +294,10 @@ class MEMM(NERecognition):
 					prev_embedding = csr_matrix(self.get_embeddings(sentence[i-1].word, self.embeddings))
 				curr_embeddings = csr_matrix(self.get_embeddings(token.word, self.embeddings))
 				sparse_embeddings = hstack([prev_embedding, curr_embeddings]) #concatenation
-				# sparse_embeddings = (prev_embedding.todense() + curr_embeddings.todense()) #addition /2
+				# sparse_embeddings = curr_embeddings # test only
+				# next_emb = csr_matrix(self.get_embeddings(sentence[i+1].word, self.embeddings)) # test next only
+				# sparse_embeddings = hstack([sparse_embeddings, next_emb]) # test next only
+
 				sparse_embeddings = csr_matrix(sparse_embeddings)
 				all_embeddings.append(sparse_embeddings) 
 
@@ -341,14 +343,19 @@ class MEMM(NERecognition):
 			if i == 0:
 				prev_embedding = csr_matrix(self.get_embeddings('<s>', self.embeddings))
 			else:
-				prev_embedding = csr_matrix(self.get_embeddings(sentence[i-1].word, self.embeddings))					
+				prev_embedding = csr_matrix(self.get_embeddings(sentence[i-1].word, self.embeddings))
+
 			curr_embeddings = csr_matrix(self.get_embeddings(token.word, self.embeddings))
 			sparse_embeddings = hstack([prev_embedding, curr_embeddings]) # concatenation
-			# sparse_embeddings = (prev_embedding.todense() + curr_embeddings.todense()) # addition /2
-			sparse_embeddings = csr_matrix(sparse_embeddings)
+			# sparse_embeddings = curr_embeddings # test for features only
+			# next_emb = csr_matrix(self.get_embeddings(sentence[i+1].word, self.embeddings)) # test next only
+			# sparse_embeddings = hstack([sparse_embeddings, next_emb]) # test next only
+
+			sparse_embeddings = csr_matrix(sparse_embeddings) 
 
 			total_feats = hstack([encoded_feats, sparse_embeddings]) 
 			encoded_prediction = self.model.predict(total_feats)
+			# encoded_prediction = self.model.predict(encoded_feats) # test for features only
 			decoded_prediction = self.label_encoder.inverse_transform(encoded_prediction)[0]
 			tag_sequence.append(decoded_prediction)
 
@@ -446,4 +453,4 @@ class MEMM(NERecognition):
 							token.ne = 'I-ORG'
 							# token.ne = 'O'
 
-			print(f"{k} sentence CLEANED!") 
+			# print(f"{k} sentence CLEANED!") 

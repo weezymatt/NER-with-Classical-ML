@@ -26,10 +26,10 @@ def main():
 	te_gold = corpus.read_conll_data(args.ENG_PATH_TE, encoding='utf-8', lang='eng')
 	te_pred = corpus.read_conll_data(args.ENG_PATH_TE, test=True, encoding='utf-8', lang='eng')
 
-	# Tuning per grid search; default model
-	lambda_ = 1e-07  
+	# Tuning per grid search
+	lambda_ = 1e-06  
 	lr = 0.1
-	epochs = 10 
+	epochs = 15
 
 	start_time = time.time()
 	ner_sys = ner_system.MEMM

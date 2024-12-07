@@ -1,0 +1,24 @@
+(Regularization, Epochs) [WORD2VEC]		* indicates non-convergence
+
+Highest F1-measure: 0.8394777896379013
+Best combo: (1e-07, 10)
+Report:               precision    recall  f1-score   support
+
+         LOC       0.92      0.87      0.90      1837
+        MISC       0.82      0.77      0.79       922
+         ORG       0.79      0.75      0.77      1341
+         PER       0.90      0.89      0.89      1842
+
+   micro avg       0.87      0.84      0.85      5942
+   macro avg       0.86      0.82      0.84      5942
+weighted avg       0.87      0.84      0.85      5942
+
+
+[[*0.7795403  0.77514309 0.77514309 0.77514309]
+ [*0.82644898 *0.82494044 0.82229851 0.82229851]
+ [*0.83034911 *0.83891626 0.83603869 0.83603869]
+ [*0.83191489 *0.83947779 *0.83176576 0.83176576]]
+
+Exlcuding non-convergent cases:
+Hishest F1-measure: 0.83603869
+Best combo: (1e-06, 15)
