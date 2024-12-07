@@ -81,12 +81,12 @@ The improved NER system is located in ```implementation/ner_main_memm.py``` and 
 
 1. Validation set
 ```bash
-python3 implementation/ner_main.py corpora/train/eng/eng.train corpora/val/eng/eng.testa
+python3 implementation/ner_main_memm.py corpora/train/eng/eng.train corpora/val/eng/eng.testa
 ```
 
 2. Test set
 ```bash
-python3 implementation/ner_main.py corpora/train/eng/eng.train corpora/test/eng/eng.testb
+python3 implementation/ner_main_memm.py corpora/train/eng/eng.train corpora/test/eng/eng.testb
 ```
 
 
