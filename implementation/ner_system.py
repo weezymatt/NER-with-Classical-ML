@@ -81,9 +81,6 @@ class FirstOrderHMM(NERecognition):
 	""" This is a first order hidden Markov model that is designed to be language
 		independent. That is, the machine learning model does not employ any
 		language specific rules for handling unknown words.
-
-		* Additive smoothing (alpha=100) performs decently well.
-		* A second order HMM would likely exceed this baseline.
 	"""
 	def __init__(self, sentences):
 		self.labels = collections.defaultdict(int)
@@ -122,7 +119,7 @@ class FirstOrderHMM(NERecognition):
 					self.emissions[label][word] = math.log((self.emission_counts[label][word]/self.labels[label]), 10)
 
 		self.start = self.transitions['<s>']
-		del self.labels['<s>'] #delete </s>? does it matter? No. Ultimately we don't bother with this token to predict it!
+		del self.labels['<s>'] 
 
 	def _viterbi(self, s):
 		'''
@@ -190,7 +187,6 @@ class MEMM(NERecognition):
 		self.feature_encoder = DictVectorizer()
 		self.org_gazetteers = corpus.read_gazetteers('implementation/gazetteers/ned.list.ORG') 
 		self.misc_gazetteers = corpus.read_gazetteers('implementation/gazetteers/ned.list.MISC')
-		self.per_gazetteers = corpus.read_gazetteers('implementation/gazetteers/ned.list.PER')
 		self.nlp = spacy.blank('en')
 		self.embeddings = api.load('word2vec-google-news-300') 
 		# self.model = lr.SGDClassifier(max_iters=max_iters, eta0=eta, C=regularization)
@@ -205,7 +201,7 @@ class MEMM(NERecognition):
 			emb = np.zeros(emb_model.vector_size) 
 		return emb
 
-	def _extract_features(self, token, doc, i, prev_feats, s): #focus on new words analysis between embeddings
+	def _extract_features(self, token, doc, i, prev_feats, s): 
 		"""
 		Method for extracting features for each token in the NER dataset. The matrix is implicitly 
 		constructed where each row is a token and contains a set of attributes that descrive it.
@@ -312,7 +308,7 @@ class MEMM(NERecognition):
 		@params sentence:  sentence
 		@return ne_labels: tag sequence of ne labels
 		'''
-		ne_labels = self.greedy_sequence_decoding(sentence) # DEFAULT DECODING STRATEGY
+		ne_labels = self.greedy_sequence_decoding(sentence) 
 		# ne_labels = self.viterbi(sentence)
 		return ne_labels
 
@@ -355,6 +351,7 @@ class MEMM(NERecognition):
 
 			total_feats = hstack([encoded_feats, sparse_embeddings]) 
 			encoded_prediction = self.model.predict(total_feats)
+
 			# encoded_prediction = self.model.predict(encoded_feats) # test for features only
 			decoded_prediction = self.label_encoder.inverse_transform(encoded_prediction)[0]
 			tag_sequence.append(decoded_prediction)
@@ -423,7 +420,6 @@ class MEMM(NERecognition):
 		return res 
 
 	def label(self, sentences):
-
 		for k, sentence in enumerate(sentences):
 			labels = self.predict(sentence) 
 
@@ -431,8 +427,14 @@ class MEMM(NERecognition):
 				token.ne = labels[i]
 			print(f"{k} sentence DONE!")
 
-		# Hack to clean label sequence (output of classifier)
-		# Performance improves when used
+		self.postprocessing(sentences)
+
+	def postprocessing(self, sentences):
+		"""
+		A hack that improves performance by cleaning the label sequence 
+		from greedy decoding.
+		"""
+
 		for k, sentence in enumerate(sentences):
 			sentence = sentence[1:-1]
 			for i, token in enumerate(sentence):
@@ -442,15 +444,11 @@ class MEMM(NERecognition):
 					if prev_ne[0] == 'B' and prev_ne[-3:] != curr_ne[-3:] and curr_ne[0] == 'I':
 						if prev_ne.endswith('LOC'): 
 							token.ne = 'I-LOC'
-							# token.ne = 'O'
 						elif prev_ne.endswith('PER'):
 							token.ne = 'I-PER'
-							# token.ne = 'O'
 						elif prev_ne.endswith('MISC'):
 							token.ne = 'I-MISC'
-							# token.ne = 'O'
 						elif prev_ne.endswith('ORG'):
 							token.ne = 'I-ORG'
-							# token.ne = 'O'
 
 			# print(f"{k} sentence CLEANED!") 
