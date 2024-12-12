@@ -72,7 +72,7 @@ The hyperparameters were tuned with grid search to find the optimal values for r
 The main NER system is located in ```implementation/ner_main.py``` and reports the results for the two baselines and Hidden Markov Model on the English/Spanish dataset.
 
 ```bash
-python3 implementation/ner_main.py corpora/train/eng/eng.train corpora/val/eng/eng.testa corpora/test/eng/eng.testb corpora/train/esp/esp.train corpora/test/esp/esp.testb
+python implementation/ner_main.py corpora/train/eng/eng.train corpora/val/eng/eng.testa corpora/test/eng/eng.testb corpora/train/esp/esp.train corpora/test/esp/esp.testb
 ```
 ## Improved System
 The improved NER system is located in ```implementation/ner_main_memm.py``` and reports the results of the Maximum-entropy model on the English dataset. The default ME model is the SGDClassifier from scikit-learn and expected run time is around 3 minutes.
