@@ -5,16 +5,16 @@ F1-score: *0.7000972981064292
 Report: 
               precision    recall  f1-score   support
 
-         LOC       0.85      0.81      0.83      1837
-        MISC       0.56      0.71      0.62       922
-         ORG       0.71      0.66      0.68      1341
-         PER       0.81      0.83      0.82      1842
+         LOC     0.8534    0.8051    0.8286      1837
+        MISC     0.5558    0.7126    0.6245       922
+         ORG     0.7065    0.6570    0.6808      1341
+         PER     0.8102    0.8252    0.8176      1842
 
-   micro avg       0.75      0.76      0.76      5942
-   macro avg       0.73      0.75      0.74      5942
-weighted avg       0.76      0.76      0.76      5942
+   micro avg     0.7514    0.7635    0.7574      5942
+   macro avg     0.7315    0.7500    0.7379      5942
+weighted avg     0.7607    0.7635    0.7602      5942
 
-Total time: 79.710280418396 seconds
+Total time: 84.76459193229675 seconds
 
 [features + gazetteers]
 File: corpora/val/eng/eng.testa
@@ -23,16 +23,16 @@ F1-score: *0.7773816433131582
 Report: 
               precision    recall  f1-score   support
 
-         LOC       0.89      0.82      0.85      1837
-        MISC       0.73      0.76      0.74       922
-         ORG       0.78      0.65      0.71      1341
-         PER       0.86      0.79      0.82      1842
+         LOC     0.8851    0.8220    0.8524      1837
+        MISC     0.7267    0.7614    0.7436       922
+         ORG     0.7837    0.6540    0.7130      1341
+         PER     0.8582    0.7888    0.8221      1842
 
-   micro avg       0.83      0.76      0.80      5942
-   macro avg       0.81      0.76      0.78      5942
-weighted avg       0.83      0.76      0.79      5942
+   micro avg     0.8282    0.7644    0.7950      5942
+   macro avg     0.8134    0.7565    0.7828      5942
+weighted avg     0.8293    0.7644    0.7947      5942
 
-Total time: 82.24057817459106 seconds
+Total time: 85.41584300994873 seconds
 
 [features + gazetteers + curr_emb]
 <ner_system.MEMM object at 0x174694f90>
@@ -42,16 +42,16 @@ F1-score: 0.8372207218266634
 Report: 
               precision    recall  f1-score   support
 
-         LOC       0.92      0.88      0.90      1837
-        MISC       0.82      0.77      0.79       922
-         ORG       0.75      0.75      0.75      1341
-         PER       0.90      0.88      0.89      1842
+         LOC     0.9154    0.8775    0.8961      1837
+        MISC     0.8173    0.7668    0.7913       922
+         ORG     0.7502    0.7524    0.7513      1341
+         PER     0.9008    0.8827    0.8917      1842
 
-   micro avg       0.86      0.83      0.85      5942
-   macro avg       0.85      0.82      0.83      5942
-weighted avg       0.86      0.83      0.85      5942
+   micro avg     0.8577    0.8337    0.8455      5942
+   macro avg     0.8459    0.8199    0.8326      5942
+weighted avg     0.8584    0.8337    0.8458      5942
 
-Total time: 114.34265518188477 seconds
+Total time: 110.12905383110046 seconds
 
 [features + gazetteers + prev_emb + curr_emb] **DEFAULT/BEST**
 <ner_system.MEMM object at 0x168ab72d0>
@@ -61,16 +61,17 @@ F1-score: 0.8360386948680112
 Report: 
               precision    recall  f1-score   support
 
-         LOC       0.91      0.88      0.89      1837
-        MISC       0.81      0.77      0.79       922
-         ORG       0.74      0.76      0.75      1341
-         PER       0.91      0.88      0.89      1842
+         LOC     0.9082    0.8775    0.8926      1837
+        MISC     0.8149    0.7690    0.7913       922
+         ORG     0.7442    0.7591    0.7516      1341
+         PER     0.9085    0.8784    0.8932      1842
 
-   micro avg       0.86      0.83      0.84      5942
-   macro avg       0.84      0.82      0.83      5942
-weighted avg       0.86      0.83      0.85      5942
+   micro avg     0.8555    0.8342    0.8448      5942
+   macro avg     0.8439    0.8210    0.8322      5942
+weighted avg     0.8568    0.8342    0.8452      5942
 
-Total time: 150.3315007686615 seconds
+Total time: 141.16650390625 seconds
+
 
 [feats + gazetteers + prev_emb + curr_emb + next_emb]
 <ner_system.MEMM object at 0x1439bfb10>
@@ -80,13 +81,13 @@ F1-score: *0.823942511840601
 Report: 
               precision    recall  f1-score   support
 
-         LOC       0.92      0.86      0.89      1837
-        MISC       0.74      0.79      0.76       922
-         ORG       0.74      0.74      0.74      1341
-         PER       0.88      0.88      0.88      1842
+         LOC     0.9189    0.8634    0.8903      1837
+        MISC     0.7444    0.7863    0.7648       922
+         ORG     0.7432    0.7360    0.7396      1341
+         PER     0.8825    0.8806    0.8815      1842
 
-   micro avg       0.84      0.83      0.83      5942
-   macro avg       0.82      0.82      0.82      5942
-weighted avg       0.84      0.83      0.83      5942
+   micro avg     0.8387    0.8280    0.8333      5942
+   macro avg     0.8222    0.8166    0.8190      5942
+weighted avg     0.8409    0.8280    0.8341      5942
 
-Total time: 194.94129300117493 seconds
+Total time: 174.53229212760925 seconds

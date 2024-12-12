@@ -12,15 +12,15 @@ beginning (B-) of entities are added, see Table 2.
 
 | Model               | Dev Acc | Dev F1 | Test Acc | Test F1 |
 |---------------------|---------|--------|----------|---------|
-| `AlwaysNonEntity`   | 83.2    | 0.0    | 82.2     | 0.0     |
-| `SingleEntity`      | 86.2    | 40.0   | 84.8     | **35.0** |
+| `AlwaysNonEntity`   | 83.3    | 0.0    | 82.5     | 0.0     |
+| `SingleEntity`      | 86.5    | 40.0   | 84.9     | **35.4** |
 
 **Table 2: Results on Spanish test set**
 
 | Model               | Test Acc | Test F1 |
 |---------------------|----------|---------|
 | `AlwaysNonEntity`   | 88.0     | 0.0     |
-| `SingleEntity`      | 74.4     | **17.0** |
+| `SingleEntity`      | 74.5     | **16.9** |
 
 ## Experiments
 
@@ -32,12 +32,12 @@ The table below shows the tuned models with $\lambda$=0.1, $\eta$=0.1, epochs=15
 
 | Run Description         | Decoding | Test | LOC  | MISC | ORG  | PER  | Overall |
 |-------------------------|----------|------|------|------|------|------|---------|
-| MEMM-sk  | Greedy  | Val  | 89.0 | 79.0 | 75.0 | 89.0 | **84.0** |
-|    |          | Test | 84.0 | 72.0 | 70.0 | 83.0 | **78.0** |
-| (Me)MM | Greedy  | Val  | 90.0 | 79.0 | 74.0 | 88.0 | **84.0** |
-|    |          | Test | 84.0 | 70.0 | 69.0 | 83.0 | **78.0** |
-| HM(Me)       | Viterbi | Val  | 86.0 | 82.0 | 71.0 | 76.0 | 79.0   |
-|     |          | Test | 80.0 | 72.0 | 62.0 | 57.0 | 69.0   |
+| MEMM-sk  | Greedy  | Val  | 89.3 | 79.1 | 75.2 | 89.3 | **84.5** |
+|    |          | Test | 84.0 | 72.2 | 70.5 | 83.5 | **78.3** |
+| (Me)MM | Greedy  | Val  | 89.7 | 79.4 | 74.5 | 88.0 | 84.2 |
+|    |          | Test | 84.0 | 70.4 | 68.8 | 82.7 | 77.6 |
+| HM(Me)       | Viterbi | Val  | 85.7 | 82.5 | 71.4 | 76.1 | 79.1   |
+|     |          | Test | 80.3 | 71.6 | 62.4 | 57.3 | 68.2   |
 
 
 The table below shows the Spanish evaluation on the tuned model with $\alpha=100$. The `(Me)` caption indicates the model was built from scratch.
@@ -46,7 +46,7 @@ The table below shows the Spanish evaluation on the tuned model with $\alpha=100
 
 | Run Description | Decoding | Test | LOC  | MISC | ORG  | PER  | Overall |
 |-----------------|----------|------|------|------|------|------|---------|
-| 1. HM(Me)  | Greedy  | Test | 71.0 | 37.0 | 72.0 | 69.0 | **68.0** |
+| 1. HM(Me)  | Greedy  | Test | 71.1 | 37.3 | 72.5 | 69.9 | **67.9** |
 
 ## Citations
 [1] Erik F. Tjong Kim Sang and Fien De Meulder. Introduction to the CoNLL-2003 Shared Task: Language-Independent Named Entity Recognition. In: Proceedings of CoNLL-2003. Edmonton, Canada, 2003.

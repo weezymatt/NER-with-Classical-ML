@@ -20,16 +20,16 @@ F1-score: 0.8301392301392301
 Report: 
               precision    recall  f1-score   support
 
-         LOC       0.89      0.90      0.90      1837
-        MISC       0.81      0.78      0.79       922
-         ORG       0.77      0.72      0.74      1341
-         PER       0.87      0.89      0.88      1842
+         LOC     0.8949    0.8993    0.8971      1837
+        MISC     0.8125    0.7755    0.7936       922
+         ORG     0.7654    0.7248    0.7445      1341
+         PER     0.8737    0.8860    0.8798      1842
 
-   micro avg       0.85      0.84      0.84      5942
-   macro avg       0.84      0.82      0.83      5942
-weighted avg       0.85      0.84      0.84      5942
+   micro avg     0.8477    0.8366    0.8421      5942
+   macro avg     0.8366    0.8214    0.8287      5942
+weighted avg     0.8463    0.8366    0.8412      5942
 
-Total time: 53497.32507419586 seconds
+Total time: 49300.987827301025 seconds
 
 Epoch: 1 completed! Loss: 0.15
 Epoch: 2 completed! Loss: 0.10
@@ -53,13 +53,13 @@ F1-score: 0.7633378932968535
 Report: 
               precision    recall  f1-score   support
 
-         LOC       0.81      0.87      0.84      1668
-        MISC       0.70      0.71      0.70       702
-         ORG       0.71      0.66      0.69      1661
-         PER       0.82      0.83      0.83      1617
+         LOC     0.8137    0.8669    0.8395      1668
+        MISC     0.7031    0.7051    0.7041       702
+         ORG     0.7147    0.6635    0.6881      1661
+         PER     0.8222    0.8324    0.8273      1617
 
-   micro avg       0.78      0.78      0.78      5648
-   macro avg       0.76      0.77      0.76      5648
-weighted avg       0.77      0.78      0.77      5648
+   micro avg     0.7754    0.7771    0.7763      5648
+   macro avg     0.7634    0.7670    0.7647      5648
+weighted avg     0.7733    0.7771    0.7746      5648
 
-Total time: 53619.224694013596 seconds
+Total time: 49318.90421080589 seconds

@@ -291,6 +291,8 @@ class MEMM(NERecognition):
 				curr_embeddings = csr_matrix(self.get_embeddings(token.word, self.embeddings))
 				sparse_embeddings = hstack([prev_embedding, curr_embeddings]) #concatenation
 				# sparse_embeddings = curr_embeddings # test only
+				# sparse_embeddings = prev_embedding # test for features only
+
 				# next_emb = csr_matrix(self.get_embeddings(sentence[i+1].word, self.embeddings)) # test next only
 				# sparse_embeddings = hstack([sparse_embeddings, next_emb]) # test next only
 
@@ -344,15 +346,18 @@ class MEMM(NERecognition):
 			curr_embeddings = csr_matrix(self.get_embeddings(token.word, self.embeddings))
 			sparse_embeddings = hstack([prev_embedding, curr_embeddings]) # concatenation
 			# sparse_embeddings = curr_embeddings # test for features only
-			# next_emb = csr_matrix(self.get_embeddings(sentence[i+1].word, self.embeddings)) # test next only
-			# sparse_embeddings = hstack([sparse_embeddings, next_emb]) # test next only
+			# sparse_embeddings = prev_embedding # test for features only
 
-			sparse_embeddings = csr_matrix(sparse_embeddings) 
+			# next_emb = csr_matrix(self.get_embeddings(sentence[i+1].word, self.embeddings)) # test next only
+
+			# sparse_embeddings = csr_matrix(sparse_embeddings) 
+			# total_feats = sparse_embeddings
 
 			total_feats = hstack([encoded_feats, sparse_embeddings]) 
 			encoded_prediction = self.model.predict(total_feats)
 
 			# encoded_prediction = self.model.predict(encoded_feats) # test for features only
+
 			decoded_prediction = self.label_encoder.inverse_transform(encoded_prediction)[0]
 			tag_sequence.append(decoded_prediction)
 

@@ -5,14 +5,14 @@ F1-score: 0.7901873327386263
 Report: 
               precision    recall  f1-score   support
 
-         LOC       0.90      0.82      0.86      1837
-        MISC       0.89      0.77      0.82       922
-         ORG       0.75      0.68      0.71      1341
-         PER       0.91      0.66      0.76      1842
+         LOC     0.8970    0.8204    0.8570      1837
+        MISC     0.8865    0.7711    0.8248       922
+         ORG     0.7514    0.6808    0.7144      1341
+         PER     0.9069    0.6558    0.7612      1842
 
-   micro avg       0.86      0.73      0.79      5942
-   macro avg       0.86      0.73      0.79      5942
-weighted avg       0.87      0.73      0.79      5942
+   micro avg     0.8628    0.7302    0.7910      5942
+   macro avg     0.8605    0.7320    0.7893      5942
+weighted avg     0.8656    0.7302    0.7901      5942
 
 <class 'ner_system.FirstOrderHMM'>
 File: corpora/test/eng/eng.testb
@@ -21,28 +21,28 @@ F1-score: 0.6845034664583536
 Report: 
               precision    recall  f1-score   support
 
-         LOC       0.82      0.78      0.80      1668
-        MISC       0.76      0.68      0.72       702
-         ORG       0.73      0.54      0.62      1661
-         PER       0.83      0.44      0.57      1617
+         LOC     0.8228    0.7848    0.8033      1668
+        MISC     0.7559    0.6795    0.7157       702
+         ORG     0.7320    0.5443    0.6243      1661
+         PER     0.8263    0.4385    0.5729      1617
 
-   micro avg       0.79      0.60      0.68      5648
-   macro avg       0.78      0.61      0.68      5648
-weighted avg       0.79      0.60      0.67      5648
+   micro avg     0.7877    0.6018    0.6823      5648
+   macro avg     0.7843    0.6117    0.6791      5648
+weighted avg     0.7888    0.6018    0.6738      5648
 
-<ner_system.FirstOrderHMM object at 0x10d14dcd0>
+<class 'ner_system.FirstOrderHMM'>
 File corpora/test/esp/esp.testb
 Accuracy: 0.9551161391729571
 F1-score: 0.6750854256425494
 Report: 
               precision    recall  f1-score   support
 
-         LOC       0.76      0.67      0.71      1084
-        MISC       0.44      0.32      0.37       339
-         ORG       0.74      0.69      0.72      1400
-         PER       0.80      0.61      0.69       735
+         LOC     0.7619    0.6670    0.7113      1084
+        MISC     0.4449    0.3215    0.3733       339
+         ORG     0.7435    0.6893    0.7153      1400
+         PER     0.7979    0.6068    0.6893       735
 
-   micro avg       0.74      0.63      0.68      3558
-   macro avg       0.69      0.57      0.62      3558
-weighted avg       0.73      0.63      0.68      3558
+   micro avg     0.7352    0.6304    0.6788      3558
+   macro avg     0.6870    0.5711    0.6223      3558
+weighted avg     0.7319    0.6304    0.6761      3558
 

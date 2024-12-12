@@ -64,6 +64,6 @@ def calculate_f1measure(gold, predictions):
 
 	accuracy = accuracy_score(y_true, y_pred)
 	score = f1_score(y_true, y_pred)
-	report = classification_report(y_true, y_pred, mode='strict', scheme=IOB2, zero_division=1)
+	report = classification_report(y_true, y_pred, mode='strict', scheme=IOB2, zero_division=1, digits=4)
 	# pdb.set_trace()
 	return accuracy, score, report
